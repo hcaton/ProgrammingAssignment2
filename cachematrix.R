@@ -10,7 +10,7 @@ makeCacheMatrix <- function(x = matrix()) {
                 x <<- y
                 m <<- NULL
         }
-        get <- function() solve(x)
+        get <- function() x
         setmatrix <- function(matrix) {
 		m <<- matrix
 	  }
@@ -36,7 +36,7 @@ cacheSolve <- function(x) {
                 return(m)
         }
         data <- x$get()
-        m <- matrix(data, nrow(data), ncol(data))
+        m <- solve(matrix(data, nrow(data), ncol(data)))
         x$setmatrix(m)
         m
 
